@@ -17,6 +17,7 @@ allure-report/
 allure-results/
 *.allure
 screenshots/
+.idea/
 
 ### Eclipse ###
 .apt_generated

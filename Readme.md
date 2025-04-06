@@ -2,7 +2,7 @@ Below is an example GitHub README file that documents your framework, its struct
 
 ---
 
-# LexisNexis Automation Framework
+# LN Automation Framework
 
 This is a robust, scalable, and reusable test automation framework built using Selenium WebDriver, Cucumber, and Java. The framework supports cross-browser testing, intelligent waits, and integrates with Allure for detailed test reports. It is designed following best practices such as DRY and SOLID principles.
 
