@@ -1,12 +1,10 @@
 package org.lexisnexis.pages.exercise1;
-
 import org.lexisnexis.pages.PageBase;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.io.File;
 import java.nio.file.Paths;
 
 public class WebFormPage extends PageBase {

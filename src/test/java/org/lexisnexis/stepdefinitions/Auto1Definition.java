@@ -5,10 +5,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.lexisnexis.core.LexDriver;
+import org.lexisnexis.core.TestContext;
 import org.lexisnexis.pages.exercise1.WebFormPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 
 public class Auto1Definition {
 
@@ -22,17 +21,17 @@ public class Auto1Definition {
 
     @Given("I open the web form page")
     public void iOpenTheWebFormPage() {
-        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+        driver.get(TestContext.get("baseUrl"));
     }
 
     @Then("I should see the page title {string}")
-    public void iShouldSeeThePageTitle(String arg0) {
-        Assert.assertEquals(webFormPage.pageTitleText(), arg0);
+    public void iShouldSeeThePageTitle(String title) {
+        Assert.assertEquals(webFormPage.pageTitleText(), title);
     }
 
     @When("I enter {string} in the text input field")
-    public void iEnterInTheTextInputField(String arg0) {
-        webFormPage.enterText(arg0);
+    public void iEnterInTheTextInputField(String text) {
+        webFormPage.enterText(text);
     }
 
     @And("I enter {string} in the password input field")

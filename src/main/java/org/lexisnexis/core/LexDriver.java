@@ -5,12 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.lexisnexis.utils.ConfigReader;
-import java.io.File;
 import java.time.Duration;
 
 public class LexDriver {
@@ -18,22 +18,17 @@ public class LexDriver {
 
     public static void initDriver() {
         if (driver.get() == null) {
-            ConfigReader configReader = new ConfigReader();  // Ensure instance is available
-            String browser = configReader.getBrowser().toLowerCase();
-            String driverPath = configReader.getDriverPath(" ");
-
-//            if (browser.isEmpty() || driverPath.isEmpty()) {
-//                throw new RuntimeException("Browser or driver path is not set in config.properties!");
-//            }
+            String browser = ConfigReader.getBrowser().toLowerCase();
 
             // Log the selected browser and driver path
             System.out.println("Initializing driver for browser: " + browser);
-            System.out.println("Driver path: " + driverPath);
 
             // Initialize WebDriver based on the selected browser
-            switch ("edge") {
+            switch (browser) {
                 case "firefox":
-                    System.setProperty("webdriver.gecko.driver", driverPath);
+                WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("--start-maximized");
                     driver.set(new FirefoxDriver());
                     break;
                 case "edge":
@@ -51,7 +46,7 @@ public class LexDriver {
             }
 
             // Set timeout and maximize window
-            int timeout = configReader.getTimeout();
+            int timeout = ConfigReader.getTimeout();
             driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
             driver.get().manage().window().maximize();
         }

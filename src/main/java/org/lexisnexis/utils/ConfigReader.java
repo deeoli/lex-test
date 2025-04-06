@@ -27,10 +27,6 @@ public class ConfigReader {
         return properties.getProperty("browser", "edge");
     }
 
-    public static String getDriverPath(String key) {
-        return properties.getProperty(key, "");
-    }
-
     public static int getTimeout() {
         return Integer.parseInt(properties.getProperty("timeout", "10"));
     }

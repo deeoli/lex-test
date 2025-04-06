@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.lexisnexis.core.LexDriver;
+import org.lexisnexis.core.TestContext;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +27,8 @@ public class TestBase {
         // Ensure WebDriver is initialized first
         LexDriver.initDriver();
         driver = LexDriver.getDriver();
+        TestContext.set("baseUrl",ConfigReader.getBaseUrl());
+        TestContext.set("timeOut",ConfigReader.getTimeout());
 
         // Load the base URL from config.properties
         String baseUrl = ConfigReader.getBaseUrl();
