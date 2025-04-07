@@ -1,5 +1,3 @@
-Below is an example GitHub README file that documents your framework, its structure, prerequisites, and instructions for running tests and generating reports.
-
 ---
 
 # LN Automation Framework
