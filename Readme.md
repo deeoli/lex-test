@@ -34,35 +34,45 @@ The framework is built to be OS-independent, easily configurable via external pr
 ```
 lexisnexis-automation/
 │
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── org/lexisnexis/
-│   │   │   │   ├── core/
-│   │   │   │   │   ├── DriverManager.java       // Manages WebDriver lifecycle
-│   │   │   │   │   ├── TestBase.java            // Base class for tests (hooks)
-│   │   │   │   ├── pages/
-│   │   │   │   │   ├── exercise1/
-│   │   │   │   │   │   └── WebFormPage.java       // Page object for web form functionality
-│   │   │   │   ├── utils/
-│   │   │   │   │   └── ConfigReader.java          // Reads configuration from config.properties
-│   │   ├── resources/
-│   │       └── config.properties                  // Configuration file (browser, URL, driver paths, etc.)
-│   │
-│   ├── test/
-│       ├── java/
-│       │   ├── org/lexisnexis/
-│       │   │   ├── stepdefinitions/
-│       │   │   │   └── Auto1Definition.java       // Cucumber step definitions
-│       │   │   └── runners/
-│       │   │       └── CucumberTestRunner.java    // Cucumber test runner
-│       ├── resources/
-│           └── features/
-│               └── automation-exercise-1.feature  // Feature file(s)
+├───src
+│   ├───main
+│   │   └───java
+│   │       └───org
+│   │           └───lexisnexis
+│   │               ├───core                          # Core framework components (driver setup, context sharing)
+│   │               │       LexDriver.java            # WebDriver factory and management class
+│   │               │       TestContext.java          # Shared context for passing data between steps
+│   │               │
+│   │               ├───pages                         # Page Object Model (POM) structure for UI pages
+│   │               │   │   PageBase.java             # Base class for all page objects (common actions/utilities)
+│   │               │   │
+│   │               │   ├───exercise1                 # Pages specific to automation exercise 1
+│   │               │   │       WebFormPage.java      # Page class for the UI form tested in exercise 1
+│   │               │   │
+│   │               │   └───exercise2                 # (Placeholder) For pages related to exercise 2
+│   │               │
+│   │               └───utils                         # Utility classes (reusable helpers)
+│   │                       ConfigReader.java         # Reads config values from `config.properties`
+│   │                       WaitUtils.java            # Provides explicit wait utilities (intelligent waits)
 │
-├── drivers/                                      // Contains WebDriver executables
-│   ├── chromedriver.exe                          // ChromeDriver for Windows (or chromedriver for Mac/Linux)
-│   └── geckodriver                               // GeckoDriver for Firefox
+│   └───test
+│       ├───java
+│       │   └───org
+│       │       └───lexisnexis
+│       │           ├───runners
+│       │           │       CucumberTestRunner.java   # Main Cucumber runner class (JUnit integration)
+│       │           │
+│       │           └───stepdefinitions
+│       │                   Auto1Definition.java      # Step definitions for automation exercise 1
+│       │                   TestBase.java             # Base class for shared step setup/teardown logic
+│       │
+│       └───resources
+│           │   config.properties                     # Configuration file for test parameters (e.g., browser, URL)
+│           │   testfile.txt                          # Sample data file (can be used for uploads or input)
+│           │
+│           └───features
+│                   automation-exercise-1.feature     # Gherkin feature file describing test scenarios for exercise 1
+|
 │
 ├── pom.xml                                       // Maven build file
 └── README.md                                     // This file
