@@ -66,7 +66,7 @@ lexisnexis-automation/
 │
 ├── pom.xml                                       // Maven build file
 └── README.md                                     // This file
-
+```
 
 ## Running Tests
 
