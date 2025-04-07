@@ -31,6 +31,7 @@ The framework is built to be OS-independent, easily configurable via external pr
 
 ## Project Structure
 
+```
 lexisnexis-automation/
 │
 ├── src/
