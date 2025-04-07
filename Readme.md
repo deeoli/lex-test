@@ -9,6 +9,7 @@ This is a robust, scalable, and reusable test automation framework built using S
 ## Table of Contents
 
 - [Overview](#overview)
+- [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
 - [Configuration](#configuration)
 - [Running Tests](#running-tests)
@@ -27,6 +28,44 @@ The LexisNexis Automation Framework is designed to test web applications efficie
 - **Maven** for dependency management and build automation.
 
 The framework is built to be OS-independent, easily configurable via external properties, and scalable for future enhancements.
+
+## Project Structure
+
+lexisnexis-automation/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── org/lexisnexis/
+│   │   │   │   ├── core/
+│   │   │   │   │   ├── DriverManager.java       // Manages WebDriver lifecycle
+│   │   │   │   │   ├── TestBase.java            // Base class for tests (hooks)
+│   │   │   │   ├── pages/
+│   │   │   │   │   ├── exercise1/
+│   │   │   │   │   │   └── WebFormPage.java       // Page object for web form functionality
+│   │   │   │   ├── utils/
+│   │   │   │   │   └── ConfigReader.java          // Reads configuration from config.properties
+│   │   ├── resources/
+│   │       └── config.properties                  // Configuration file (browser, URL, driver paths, etc.)
+│   │
+│   ├── test/
+│       ├── java/
+│       │   ├── org/lexisnexis/
+│       │   │   ├── stepdefinitions/
+│       │   │   │   └── Auto1Definition.java       // Cucumber step definitions
+│       │   │   └── runners/
+│       │   │       └── CucumberTestRunner.java    // Cucumber test runner
+│       ├── resources/
+│           └── features/
+│               └── automation-exercise-1.feature  // Feature file(s)
+│
+├── drivers/                                      // Contains WebDriver executables
+│   ├── chromedriver.exe                          // ChromeDriver for Windows (or chromedriver for Mac/Linux)
+│   └── geckodriver                               // GeckoDriver for Firefox
+│
+├── pom.xml                                       // Maven build file
+└── README.md                                     // This file
+
 
 ## Running Tests
 
